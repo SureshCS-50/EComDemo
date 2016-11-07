@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">EComDemo</string>
+    <string name="str_sign_up">Sign up</string>
+    <string name="str_terms">Terms</string>
+    <string name="str_login">Login</string>
+    <string name="str_create_account">Agree &amp; Create Account</string>
+    <string name="str_name">Name</string>
+    <string name="str_email">Email</string>
+    <string name="str_confirm_password">Confirm Password</string>
+    <string name="str_password">Password</string>
+    <string name="str_forgot_password">Forgot your password?</string>
+    <string name="str_txt_terms_condition">I have read and agree with </string>
+    <string name="str_terms_condition">Terms &amp; Conditions</string>
+    <string name="msg_email_validation">Please enter your email</string>
+    <string name="msg_name_validation">Please enter your name</string>
+    <string name="msg_invalid_email_validation">Invalid email format</string>
+    <string name="msg_password_validation">Please enter your Password</string>
+    <string name="msg_confirm_password_validation">Please enter your confirm password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_password_confirm_password_mismatch">Password and confirm password should be same</string>
+</resources>
