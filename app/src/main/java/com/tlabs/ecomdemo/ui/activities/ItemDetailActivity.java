@@ -1,7 +1,9 @@
-package com.tlabs.ecomdemo;
+package com.tlabs.ecomdemo.ui.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.tlabs.ecomdemo.R;
 
 public class ItemDetailActivity extends AppCompatActivity {
 

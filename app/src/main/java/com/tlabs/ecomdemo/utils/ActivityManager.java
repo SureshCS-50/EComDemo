@@ -1,7 +1,11 @@
-package com.tlabs.ecomdemo;
+package com.tlabs.ecomdemo.utils;
 
 import android.app.Activity;
 import android.content.Intent;
+
+import com.tlabs.ecomdemo.ui.activities.HomeActivity;
+import com.tlabs.ecomdemo.ui.activities.LoginActivity;
+import com.tlabs.ecomdemo.ui.activities.SignUpActivity;
 
 /**
  * Created by Sureshkumar on 06/11/16.

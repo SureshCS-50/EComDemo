@@ -1,4 +1,4 @@
-package com.tlabs.ecomdemo.Models;
+package com.tlabs.ecomdemo.models;
 
 /**
  * Created by Sureshkumar on 06/11/16.

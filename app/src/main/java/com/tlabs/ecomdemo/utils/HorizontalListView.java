@@ -1,4 +1,4 @@
-package com.tlabs.ecomdemo;
+package com.tlabs.ecomdemo.utils;
 
 import android.content.Context;
 import android.database.DataSetObserver;

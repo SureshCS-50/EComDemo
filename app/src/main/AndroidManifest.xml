@@ -3,22 +3,28 @@
     package="com.tlabs.ecomdemo">
 
     <application
+        android:name=".EComDemoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".ui.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".ItemsActivity" />
-        <activity android:name=".ItemDetailActivity"></activity>
+        <activity android:name=".ui.activities.SignUpActivity" />
+        <activity android:name=".ui.activities.HomeActivity" />
+        <activity android:name=".ui.activities.ItemsActivity" />
+        <activity android:name=".ui.activities.ItemDetailActivity"/>
+
+        <meta-data android:name="DATABASE" android:value="ecomapp.db" />
+        <meta-data android:name="VERSION" android:value="1" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.tlabs.ecomdemo.models" />
     </application>
 
 </manifest>
