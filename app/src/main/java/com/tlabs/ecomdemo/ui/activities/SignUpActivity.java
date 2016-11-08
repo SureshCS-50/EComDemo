@@ -1,6 +1,5 @@
 package com.tlabs.ecomdemo.ui.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -9,19 +8,24 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.tlabs.ecomdemo.R;
+import com.tlabs.ecomdemo.models.UserAccount;
+import com.tlabs.ecomdemo.ui.common.BaseActivity;
 import com.tlabs.ecomdemo.utils.ActivityManager;
 
 import java.util.regex.Pattern;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends BaseActivity {
 
     private EditText mEtName, mEtEmail, mEtPassword, mEtConfirmPassword;
     private Button mBtnSignUp;
+    private UserAccount mUserAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        mUserAccount = new UserAccount();
 
         mEtName = (EditText) findViewById(R.id.etName);
         mEtEmail = (EditText) findViewById(R.id.etEmail);
@@ -29,10 +33,18 @@ public class SignUpActivity extends AppCompatActivity {
         mEtConfirmPassword = (EditText) findViewById(R.id.etConfirmPassword);
         mBtnSignUp = (Button) findViewById(R.id.btnSignup);
 
+
         mBtnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validateFields()){
+                if (validateFields()) {
+
+                    mUserAccount.name = mEtName.getText().toString().trim();
+                    mUserAccount.email = mEtEmail.getText().toString().trim();
+                    mUserAccount.password = mEtPassword.getText().toString().trim();
+                    mUserAccount.save();
+
+                    mPreferenceManager.setIsLoggedIn(true);
                     ActivityManager.showHomeActivity(SignUpActivity.this);
                     finish();
                 }
@@ -48,7 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
         String password = mEtPassword.getText().toString().trim();
         String confirmPassword = mEtConfirmPassword.getText().toString().trim();
 
-        if(name.isEmpty()){
+        if (name.isEmpty()) {
             mEtName.setError(getString(R.string.msg_name_validation));
             mEtName.requestFocus();
             return false;
@@ -68,7 +80,7 @@ public class SignUpActivity extends AppCompatActivity {
             mEtConfirmPassword.setError(getString(R.string.msg_confirm_password_validation));
             mEtConfirmPassword.requestFocus();
             return false;
-        } else if(!password.equals(confirmPassword)) {
+        } else if (!password.equals(confirmPassword)) {
             Toast.makeText(this, getString(R.string.str_password_confirm_password_mismatch), Toast.LENGTH_SHORT).show();
             return false;
         }

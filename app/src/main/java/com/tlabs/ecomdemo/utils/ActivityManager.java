@@ -25,6 +25,7 @@ public class ActivityManager {
 
     public static void showHomeActivity(Activity activity){
         Intent intent = new Intent(activity, HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         activity.startActivity(intent);
     }
 

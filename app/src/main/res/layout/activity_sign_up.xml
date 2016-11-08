@@ -58,6 +58,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/dimen_16"
+                    android:layout_marginTop="@dimen/dimen_16"
                     android:background="@drawable/login_edittext_bg"
                     android:hint="@string/str_confirm_password"
                     android:inputType="textPassword"

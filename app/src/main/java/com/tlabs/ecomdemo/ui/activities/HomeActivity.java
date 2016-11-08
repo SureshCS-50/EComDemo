@@ -1,29 +1,112 @@
 package com.tlabs.ecomdemo.ui.activities;
 
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.view.ViewPager;
 import android.widget.LinearLayout;
 
 import com.tlabs.ecomdemo.R;
+import com.tlabs.ecomdemo.adapters.HomeBannerPagerAdapter;
+import com.tlabs.ecomdemo.adapters.HomeCategoryAdapter;
+import com.tlabs.ecomdemo.models.Category;
+import com.tlabs.ecomdemo.ui.common.BaseActivity;
+import com.tlabs.ecomdemo.utils.Constants;
 
-public class HomeActivity extends AppCompatActivity {
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-    private LinearLayout mLytHomeCategorys;
-    private ViewPager mBannerViews;
+import java.util.ArrayList;
+
+public class HomeActivity extends BaseActivity {
+
+    private LinearLayout mLytHomeCategories;
+    private ViewPager mBannerPager;
+    private ArrayList<Category> mCategories;
+    private HomeCategoryAdapter mHomeCategoryAdapter;
+    private HomeBannerPagerAdapter mHomeBannerPagerAdapter;
+    private Handler mBannerHandler;
+    private int mDelay = 3000; //milliseconds
+    private int mPage = 0;
+    Runnable mBannerRunnable = new Runnable() {
+        public void run() {
+            if (mHomeBannerPagerAdapter.getCount() == mPage) {
+                mPage = 0;
+            } else {
+                mPage++;
+            }
+            mBannerPager.setCurrentItem(mPage, true);
+            mBannerHandler.postDelayed(this, mDelay);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        mBannerViews = (ViewPager) findViewById(R.id.viewPagerBanner);
-        mLytHomeCategorys = (LinearLayout) findViewById(R.id.lytHomeItems);
+        mCategories = new ArrayList<>();
 
+        mBannerHandler = new Handler();
+        mBannerPager = (ViewPager) findViewById(R.id.viewPagerBanner);
+        mLytHomeCategories = (LinearLayout) findViewById(R.id.lytHomeItems);
+        mHomeCategoryAdapter = new HomeCategoryAdapter(this, mCategories);
+        mHomeBannerPagerAdapter = new HomeBannerPagerAdapter(getSupportFragmentManager());
+
+        loadBanners();
         loadCategoryList();
     }
 
-    private void loadCategoryList() {
+    private void loadBanners() {
+        mBannerPager.setAdapter(mHomeBannerPagerAdapter);
+        mBannerPager.setCurrentItem(0);
+        mBannerPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mPage = position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    private void loadCategoryList() {
+        try {
+            JSONArray jCategories = new JSONArray(Constants.JSON_CATEGORIES);
+            for (int i = 0; i < jCategories.length(); i++) {
+                JSONObject jCategory = jCategories.getJSONObject(i);
+                Category category = new Category();
+                category.categoryId = jCategory.getString("id");
+                category.name = jCategory.getString("name");
+                category.drawable = jCategory.getString("drawable");
+                category.description = jCategory.getString("description");
+                mCategories.add(category);
+            }
+
+            for (int i = 0; i < mHomeCategoryAdapter.getCount(); i++) {
+                mLytHomeCategories.addView(mHomeCategoryAdapter.getView(i, null, null));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mBannerHandler.removeCallbacks(mBannerRunnable);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mBannerHandler.postDelayed(mBannerRunnable, mDelay);
     }
 }

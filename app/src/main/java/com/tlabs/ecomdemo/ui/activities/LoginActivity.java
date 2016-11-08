@@ -1,19 +1,20 @@
 package com.tlabs.ecomdemo.ui.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tlabs.ecomdemo.R;
+import com.tlabs.ecomdemo.ui.common.BaseActivity;
 import com.tlabs.ecomdemo.utils.ActivityManager;
 
 import java.util.regex.Pattern;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private EditText mEtEmail, mEtPassword;
     private TextView mTxtForgotPassword, mTxtSignUp, mTxtTerms;
@@ -28,15 +29,21 @@ public class LoginActivity extends AppCompatActivity {
         mEtPassword = (EditText) findViewById(R.id.etPassword);
         mTxtForgotPassword = (TextView) findViewById(R.id.txtForgotPassword);
         mTxtSignUp = (TextView) findViewById(R.id.txtSignUp);
+        mTxtTerms = (TextView) findViewById(R.id.txtTerms);
         mBtnLogin = (Button) findViewById(R.id.btnLogin);
 
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validateFields()){
-                    if(mEtEmail.getText().toString().equals("admin@admin.com") && mEtPassword.getText().toString().equals("admin")){
-                        ActivityManager.showHomeActivity(LoginActivity.this);
-                        finish();
+                if (validateFields()) {
+                    String email = mEtEmail.getText().toString().trim();
+                    String password = mEtPassword.getText().toString().trim();
+
+                    if (mDataManager.checkUserLogin(email, password)) {
+                        mPreferenceManager.setIsLoggedIn(true);
+                        showHomeScreen();
+                    } else {
+                        Toast.makeText(LoginActivity.this, R.string.str_invalid_login, Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -55,9 +62,30 @@ public class LoginActivity extends AppCompatActivity {
                 ActivityManager.showSignupActivity(LoginActivity.this);
             }
         });
+
+        mTxtTerms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        checkLogInStatus();
+    }
+
+    private void checkLogInStatus() {
+        if (mPreferenceManager.isLoggedIn()) {
+            showHomeScreen();
+        }
+    }
+
+    private void showHomeScreen() {
+        ActivityManager.showHomeActivity(LoginActivity.this);
+        finish();
     }
 
     private void showForgotPassword(String email) {
+
     }
 
     private boolean validateFields() {
