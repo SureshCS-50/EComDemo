@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cardview_light_background"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:id="@+id/lytImage"
+        android:layout_width="@dimen/dimen_90"
+        android:layout_height="@dimen/dimen_90"
+        android:background="@color/colorPrimaryLight">
+
+        <LinearLayout
+            android:id="@+id/lytNameIndex"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            tools:background="@color/colorPrimaryLight">
+
+            <TextView
+                android:id="@+id/txtNameIndex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                tools:text="E" />
+
+        </LinearLayout>
+
+        <!--<ImageView-->
+        <!--android:id="@+id/imgCategory"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:padding="@dimen/dimen_8"-->
+        <!--android:scaleType="fitCenter"-->
+        <!--android:src="@mipmap/ic_launcher"/>-->
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="@dimen/dimen_8"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryText"
+                android:textStyle="bold"
+                tools:text="@string/app_name" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lytQuantityInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/numberPicker"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtQuantityLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_8"
+                    android:layout_marginRight="@dimen/dimen_8"
+                    android:maxLines="1"
+                    android:text="Quantity:"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_8"
+                    android:layout_marginRight="@dimen/dimen_8"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textStyle="italic"
+                    tools:text="(1kg = Rs.9)" />
+
+            </LinearLayout>
+
+            <com.tlabs.ecomdemo.utils.widget.FloatPickerWidget
+                android:id="@+id/numberPicker"
+                decimal_places="0"
+                default_value="1f"
+                increment_amount="1f"
+                maximum_value="499f"
+                minimum_value="1f"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dimen_8"
+                android:layout_marginLeft="@dimen/dimen_8"
+                android:layout_alignParentRight="true"
+                android:gravity="center"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/lytPriceInfo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_48"
+            android:layout_marginBottom="@dimen/dimen_8"
+            android:layout_marginRight="@dimen/dimen_8"
+            android:layout_marginTop="@dimen/dimen_8">
+
+            <TextView
+                android:id="@+id/txtPriceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/txtPrice"
+                android:layout_marginLeft="@dimen/dimen_8"
+                android:layout_marginRight="@dimen/dimen_8"
+                android:layout_toLeftOf="@+id/txtPrice"
+                android:maxLines="1"
+                android:text="Price:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/colorSecondaryText"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/dimen_8"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/colorSecondaryText"
+                android:textStyle="bold"
+                tools:text="Rs.9" />
+
+            <TextView
+                android:id="@+id/txtDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_8"
+                android:text="Remove"
+                android:textColor="@color/red"
+                android:layout_alignTop="@+id/txtPrice"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -5,23 +5,26 @@ import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.widget.LinearLayout;
 
+import com.google.gson.reflect.TypeToken;
 import com.tlabs.ecomdemo.R;
 import com.tlabs.ecomdemo.adapters.HomeBannerPagerAdapter;
 import com.tlabs.ecomdemo.adapters.HomeCategoryAdapter;
 import com.tlabs.ecomdemo.models.Category;
 import com.tlabs.ecomdemo.ui.common.BaseActivity;
 import com.tlabs.ecomdemo.utils.Constants;
+import com.tlabs.ecomdemo.utils.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends BaseActivity {
 
     private LinearLayout mLytHomeCategories;
     private ViewPager mBannerPager;
-    private ArrayList<Category> mCategories;
+    private List<Category> mCategories;
     private HomeCategoryAdapter mHomeCategoryAdapter;
     private HomeBannerPagerAdapter mHomeBannerPagerAdapter;
     private Handler mBannerHandler;
@@ -44,7 +47,7 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        mCategories = new ArrayList<>();
+        mCategories = mDataManager.getAllCategories();
 
         mBannerHandler = new Handler();
         mBannerPager = (ViewPager) findViewById(R.id.viewPagerBanner);
@@ -79,17 +82,6 @@ public class HomeActivity extends BaseActivity {
 
     private void loadCategoryList() {
         try {
-            JSONArray jCategories = new JSONArray(Constants.JSON_CATEGORIES);
-            for (int i = 0; i < jCategories.length(); i++) {
-                JSONObject jCategory = jCategories.getJSONObject(i);
-                Category category = new Category();
-                category.categoryId = jCategory.getString("id");
-                category.name = jCategory.getString("name");
-                category.drawable = jCategory.getString("drawable");
-                category.description = jCategory.getString("description");
-                mCategories.add(category);
-            }
-
             for (int i = 0; i < mHomeCategoryAdapter.getCount(); i++) {
                 mLytHomeCategories.addView(mHomeCategoryAdapter.getView(i, null, null));
             }

@@ -4,13 +4,32 @@
     android:id="@+id/activity_items"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.tlabs.ecomdemo.ui.activities.ItemsActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
     <ListView
         android:id="@+id/listItems"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:dividerHeight="@dimen/dimen_1"
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/btnCart"
         android:divider="@color/colorDividerTransparent"/>
+
+    <Button
+        android:id="@+id/btnCart"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:text="ADD TO CART"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        />
 
 </RelativeLayout>

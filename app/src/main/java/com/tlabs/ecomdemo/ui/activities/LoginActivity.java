@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.tlabs.ecomdemo.R;
 import com.tlabs.ecomdemo.ui.common.BaseActivity;
 import com.tlabs.ecomdemo.utils.ActivityManager;
+import com.tlabs.ecomdemo.utils.Utils;
 
 import java.util.regex.Pattern;
 
@@ -40,6 +41,7 @@ public class LoginActivity extends BaseActivity {
                     String password = mEtPassword.getText().toString().trim();
 
                     if (mDataManager.checkUserLogin(email, password)) {
+                        Utils.loadStaticData();
                         mPreferenceManager.setIsLoggedIn(true);
                         showHomeScreen();
                     } else {

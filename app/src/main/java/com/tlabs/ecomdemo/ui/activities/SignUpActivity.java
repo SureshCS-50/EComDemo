@@ -11,6 +11,7 @@ import com.tlabs.ecomdemo.R;
 import com.tlabs.ecomdemo.models.UserAccount;
 import com.tlabs.ecomdemo.ui.common.BaseActivity;
 import com.tlabs.ecomdemo.utils.ActivityManager;
+import com.tlabs.ecomdemo.utils.Utils;
 
 import java.util.regex.Pattern;
 
@@ -45,6 +46,8 @@ public class SignUpActivity extends BaseActivity {
                     mUserAccount.save();
 
                     mPreferenceManager.setIsLoggedIn(true);
+
+                    Utils.loadStaticData();
                     ActivityManager.showHomeActivity(SignUpActivity.this);
                     finish();
                 }

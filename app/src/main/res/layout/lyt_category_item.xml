@@ -25,8 +25,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/white"
-                tools:text="E"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="N" />
 
         </LinearLayout>
 
@@ -45,42 +45,27 @@
         android:layout_height="@dimen/dimen_90"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/txtName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_8"
-                android:layout_toLeftOf="@+id/itemCheckBox"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:ellipsize="end"
-                android:maxLines="2"
-                tools:text="@string/app_name"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/colorPrimaryText"
-                android:textStyle="bold" />
-
-            <CheckBox
-                android:id="@+id/itemCheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/dimen_16"
-                android:gravity="center_horizontal" />
-
-        </RelativeLayout>
+            android:layout_margin="@dimen/dimen_8"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorPrimaryText"
+            android:textStyle="bold"
+            tools:text="Name" />
 
         <LinearLayout
             android:id="@+id/lytCategoryInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/dimen_4"
+            android:layout_marginBottom="@dimen/dimen_4"
+            android:layout_marginLeft="@dimen/dimen_8"
+            android:layout_marginRight="@dimen/dimen_8">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -89,15 +74,22 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="@dimen/dimen_18"
+                    android:layout_height="@dimen/dimen_18"
+                    android:src="@drawable/location_marker"
+                    android:tint="@color/colorPrimary" />
+
                 <TextView
-                    android:id="@+id/txtQuantity"
+                    android:id="@+id/txtLocality"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dimen_8"
                     android:maxLines="1"
-                    tools:text="Quantity"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/colorSecondaryText" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textStyle="bold"
+                    tools:text="Chennai" />
 
             </LinearLayout>
 
@@ -108,19 +100,22 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="@dimen/dimen_18"
+                    android:layout_height="@dimen/dimen_18"
+                    android:src="@android:drawable/star_big_on"
+                    android:tint="@color/colorPrimary" />
+
                 <TextView
-                    android:id="@+id/txtPrice"
+                    android:id="@+id/txtRating"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dimen_8"
-                    android:layout_marginRight="@dimen/dimen_16"
-                    android:gravity="end"
                     android:maxLines="1"
-                    tools:text="Price"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/colorSecondaryText"
-                    android:textStyle="bold" />
-
+                    android:textStyle="bold"
+                    tools:text="5.0" />
             </LinearLayout>
 
         </LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_item_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tlabs.ecomdemo.ui.activities.CartActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <ListView
+        android:id="@+id/listItems"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/divider"
+        android:layout_below="@+id/toolbar"
+        android:divider="@color/colorDividerTransparent"
+        android:dividerHeight="@dimen/dimen_1" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1"
+        android:layout_above="@+id/btnLyt"
+        android:background="@color/colorSecondaryText" />
+
+    <LinearLayout
+        android:id="@+id/btnLyt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtTotal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/colorPrimaryText"
+            android:textStyle="bold"
+            tools:text="Rs.10.0" />
+
+        <Button
+            android:id="@+id/btnBuy"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="0.5"
+            android:background="@color/colorPrimary"
+            android:text="BUY NOW"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>
