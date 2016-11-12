@@ -10,4 +10,6 @@ public class UserAccount extends SugarRecord {
     public String name = "";
     public String email = "";
     public String password = "";
+    public String address = "";
+    public String mobile = "";
 }

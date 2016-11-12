@@ -34,7 +34,9 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.tlabs.ecomdemo.models" />
 
-        <activity android:name=".ui.activities.StoresActivity"></activity>
+        <activity android:name=".ui.activities.StoresActivity" />
+        <activity android:name=".ui.activities.AddressActivity" />
+        <activity android:name=".ui.activities.PaymentActivity"></activity>
     </application>
 
 </manifest>
