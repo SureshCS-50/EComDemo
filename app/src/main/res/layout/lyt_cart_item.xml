@@ -12,31 +12,29 @@
         android:layout_height="@dimen/dimen_90"
         android:background="@color/colorPrimaryLight">
 
-        <LinearLayout
-            android:id="@+id/lytNameIndex"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            tools:background="@color/colorPrimaryLight">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/lytNameIndex"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center"-->
+            <!--tools:background="@color/colorPrimaryLight">-->
 
-            <TextView
-                android:id="@+id/txtNameIndex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                tools:text="E" />
+            <!--<TextView-->
+                <!--android:id="@+id/txtNameIndex"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textStyle="bold"-->
+                <!--tools:text="E" />-->
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
-        <!--<ImageView-->
-        <!--android:id="@+id/imgCategory"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:padding="@dimen/dimen_8"-->
-        <!--android:scaleType="fitCenter"-->
-        <!--android:src="@mipmap/ic_launcher"/>-->
+        <ImageView
+        android:id="@+id/imgCategory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"/>
 
     </FrameLayout>
 

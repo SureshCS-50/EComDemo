@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tlabs.ecomdemo.R;
@@ -57,10 +58,11 @@ public class ItemsAdapter extends BaseAdapter{
 
             view = mInflater.inflate(R.layout.lyt_item, null);
             viewHolder.txtName = (TextView) view.findViewById(R.id.txtName);
-            viewHolder.txtNameIndex = (TextView) view.findViewById(R.id.txtNameIndex);
+//            viewHolder.txtNameIndex = (TextView) view.findViewById(R.id.txtNameIndex);
             viewHolder.txtPrice = (TextView) view.findViewById(R.id.txtPrice);
             viewHolder.txtQuantity = (TextView) view.findViewById(R.id.txtQuantity);
             viewHolder.checkbox = (CheckBox) view.findViewById(R.id.itemCheckBox);
+            viewHolder.imgCategory = (ImageView) view.findViewById(R.id.imgCategory);
 
             view.setTag(viewHolder);
         } else {
@@ -70,9 +72,10 @@ public class ItemsAdapter extends BaseAdapter{
         Item item = mItems.get(position);
 
         viewHolder.txtName.setText(item.name);
-        viewHolder.txtNameIndex.setText(item.name.substring(0, 1));
+//        viewHolder.txtNameIndex.setText(item.name.substring(0, 1));
         viewHolder.txtPrice.setText("Rs."+item.price);
         viewHolder.txtQuantity.setText(item.quantity);
+        viewHolder.imgCategory.setImageResource(item.drawable);
 
         viewHolder.checkbox.setId(position);
         viewHolder.checkbox.setOnClickListener(new View.OnClickListener() {
@@ -97,8 +100,9 @@ public class ItemsAdapter extends BaseAdapter{
     }
 
     static class ViewHolder {
-        TextView txtName, txtNameIndex, txtPrice, txtQuantity;
+        TextView txtName, /*txtNameIndex,*/ txtPrice, txtQuantity;
         CheckBox checkbox;
+        ImageView imgCategory;
         int id;
     }
 }

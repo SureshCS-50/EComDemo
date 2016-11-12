@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tlabs.ecomdemo.R;
@@ -114,20 +115,21 @@ public class ExCartOrderAdapter extends BaseExpandableListAdapter {
             }
 
             TextView txtName = (TextView) view.findViewById(R.id.txtName);
-            TextView txtNameIndex = (TextView) view.findViewById(R.id.txtNameIndex);
+//            TextView txtNameIndex = (TextView) view.findViewById(R.id.txtNameIndex);
             TextView txtProductInfo = (TextView) view.findViewById(R.id.txtItemInfo);
             TextView txtQuantityCount = (TextView) view.findViewById(R.id.txtQuantity);
             TextView txtPriceCount = (TextView) view.findViewById(R.id.txtPrice);
-//            ImageView imgStatus = (ImageView) view.findViewById(R.id.imgAgentStatus);
+            ImageView imgCategory = (ImageView) view.findViewById(R.id.imgCategory);
 
             String name = "";
             CartItem item = mCartOrderDetails.get(groupPosition).items.get(childPosition);
             if (item != null) {
                 txtName.setText(item.itemName);
-                txtNameIndex.setText(item.itemName.substring(0, 1));
+//                txtNameIndex.setText(item.itemName.substring(0, 1));
                 txtProductInfo.setText("("+item.itemQuantity+" = Rs."+item.itemPrice+")");
                 txtPriceCount.setText(item.netPrice);
                 txtQuantityCount.setText(String.valueOf(item.netQuantity));
+                imgCategory.setImageResource(item.drawable);
             }
         } catch (Exception ex) {
             ex.printStackTrace();

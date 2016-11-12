@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tlabs.ecomdemo.R;
@@ -76,11 +77,12 @@ public class CartItemsAdapter extends BaseAdapter{
 
             view = mInflater.inflate(R.layout.lyt_cart_item, null);
             viewHolder.txtName = (TextView) view.findViewById(R.id.txtName);
-            viewHolder.txtNameIndex = (TextView) view.findViewById(R.id.txtNameIndex);
+//            viewHolder.txtNameIndex = (TextView) view.findViewById(R.id.txtNameIndex);
             viewHolder.txtPrice = (TextView) view.findViewById(R.id.txtPrice);
             viewHolder.txtQuantity = (TextView) view.findViewById(R.id.txtQuantity);
             viewHolder.numberPicker = (FloatPickerWidget) view.findViewById(R.id.numberPicker);
             viewHolder.txtDelete = (TextView) view.findViewById(R.id.txtDelete);
+            viewHolder.imgCategory = (ImageView) view.findViewById(R.id.imgCategory);
 
             view.setTag(viewHolder);
         } else {
@@ -90,7 +92,8 @@ public class CartItemsAdapter extends BaseAdapter{
         final CartItem item = mItems.get(position);
 
         viewHolder.txtName.setText(item.itemName);
-        viewHolder.txtNameIndex.setText(item.itemName.substring(0, 1));
+//        viewHolder.txtNameIndex.setText(item.itemName.substring(0, 1));
+        viewHolder.imgCategory.setImageResource(item.drawable);
         String quantity = "("+item.itemQuantity+" = Rs."+item.itemPrice+")";
         viewHolder.txtQuantity.setText(quantity);
         String value = "Rs."+item.itemPrice * Integer.valueOf(mMeta.get(position).quantity);
@@ -138,9 +141,10 @@ public class CartItemsAdapter extends BaseAdapter{
     }
 
     static class ViewHolder {
-        TextView txtName, txtNameIndex, txtPrice, txtQuantity;
+        TextView txtName, /*txtNameIndex,*/ txtPrice, txtQuantity;
         FloatPickerWidget numberPicker;
         TextView txtDelete;
+        ImageView imgCategory;
         int id;
     }
 }
