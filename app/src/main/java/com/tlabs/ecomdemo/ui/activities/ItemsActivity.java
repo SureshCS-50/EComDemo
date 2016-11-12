@@ -1,8 +1,11 @@
 package com.tlabs.ecomdemo.ui.activities;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -37,6 +40,7 @@ public class ItemsActivity extends BaseActivity {
     private Button  mBtnAddToCart;
     private Store mStore;
     private Category mCategory;
+    private CartOrder mCartOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,14 @@ public class ItemsActivity extends BaseActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        mToolbar.setTitle(mStore.name);
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        setSupportActionBar(mToolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         mListViewItems = (ListView) findViewById(R.id.listItems);
         mItemsAdapter = new ItemsAdapter(this, mItems);
@@ -67,12 +78,16 @@ public class ItemsActivity extends BaseActivity {
                 List<Item> allItems = mItemsAdapter.mItems;
                 boolean isItemsAdded = false;
 
-                CartOrder order = new CartOrder();
-                order.storeId = mStoreId;
-                order.storeName = mStore.name;
-                order.categoryId = mCategoryId;
-                order.categoryName = mCategory.name;
-                order.save();
+                mCartOrder = new CartOrder();
+                mCartOrder.storeId = mStoreId;
+                mCartOrder.storeName = mStore.name;
+                mCartOrder.categoryId = mCategoryId;
+                mCartOrder.categoryName = mCategory.name;
+                mCartOrder.save();
+                mCartOrder.orderId = mCartOrder.getId();
+                mCartOrder.save();
+
+
 
                 for(int i = 0; i < selectedItemIds.length; i++){
                     if(selectedItemIds[i]){
@@ -85,13 +100,13 @@ public class ItemsActivity extends BaseActivity {
                         cartItem.itemQuantity = selectedItem.quantity;
                         cartItem.storeId = mStoreId;
                         cartItem.categoryId = mCategoryId;
-                        cartItem.orderId = order.getId();
+                        cartItem.orderId = mCartOrder.getId();
                         cartItem.save();
                     }
                 }
 
                 if(isItemsAdded){
-                    ActivityManager.showCartActivity(ItemsActivity.this, order.getId());
+                    ActivityManager.showCartActivity(ItemsActivity.this, mCartOrder.getId());
                 } else{
                     Toast.makeText(ItemsActivity.this, "Please select atleast one item to continue", Toast.LENGTH_SHORT).show();
                 }
@@ -110,9 +125,44 @@ public class ItemsActivity extends BaseActivity {
             }
         }
         if(isItemsAdded){
-            // Show alert dialog..
+            showItemSelectedAlertDialog();
         } else{
             super.onBackPressed();
         }
+    }
+
+    private void showItemSelectedAlertDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this)
+                .setMessage("Are you sure, Do you want to continue?")
+                .setPositiveButton(Constants.KEY_YES,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                if(mCartOrder != null){
+                                    mDataManager.removeAllItemsByOrderId(mCartOrder.getId());
+                                }
+                                finish();
+                            }
+                        })
+                .setNegativeButton(Constants.KEY_NO, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

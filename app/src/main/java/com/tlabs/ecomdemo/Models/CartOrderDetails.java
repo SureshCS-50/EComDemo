@@ -1,18 +1,19 @@
 package com.tlabs.ecomdemo.models;
 
-import com.orm.SugarRecord;
+import com.tlabs.ecomdemo.models.CartItem;
 
-import java.io.Serializable;
+import java.util.List;
 
 /**
- * Created by Sureshkumar on 11/11/16.
+ * Created by Sureshkumar on 12/11/16.
  */
 
-public class CartOrder extends SugarRecord implements Serializable{
+public class CartOrderDetails {
     public Long orderId = 0l;
     public String storeId = "";
     public String storeName = "";
     public String categoryId = "";
     public String categoryName = "";
     public String netPrice = "";
+    public List<CartItem> items;
 }

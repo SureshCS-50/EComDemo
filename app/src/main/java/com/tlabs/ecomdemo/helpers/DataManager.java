@@ -1,6 +1,7 @@
 package com.tlabs.ecomdemo.helpers;
 
 import com.tlabs.ecomdemo.models.CartItem;
+import com.tlabs.ecomdemo.models.CartOrder;
 import com.tlabs.ecomdemo.models.Category;
 import com.tlabs.ecomdemo.models.Item;
 import com.tlabs.ecomdemo.models.Store;
@@ -30,6 +31,14 @@ public class DataManager {
             return stores;
         }
 
+        return new ArrayList<>();
+    }
+
+    public List<CartOrder> getAllOrders(){
+        List<CartOrder> orders = CartOrder.listAll(CartOrder.class);
+        if(orders != null && orders.size() > 0){
+            return orders;
+        }
         return new ArrayList<>();
     }
 
@@ -86,5 +95,26 @@ public class DataManager {
 
     public void removeItemByOrderId(long orderId, String itemId) {
         CartItem.deleteAll(CartItem.class, "order_id = ? and item_id = ?", new String[]{String.valueOf(orderId), itemId});
+    }
+
+    public UserAccount getUserAccountByEmail(String email) {
+        List<UserAccount> accounts = UserAccount.find(UserAccount.class, "email = ?", new String[]{email}, null, null, null);
+        if (accounts != null && accounts.size() > 0) {
+            return accounts.get(0);
+        }
+
+        return null;
+    }
+
+    public void removeAllItemsByOrderId(Long orderId) {
+        CartItem.deleteAll(CartItem.class, "order_id = ?", new String[]{String.valueOf(orderId)});
+    }
+
+    public CartOrder getCartOrderById(long orderId) {
+        List<CartOrder> orders = CartOrder.find(CartOrder.class, "order_id = ?", new String[]{String.valueOf(orderId)}, null, null, null);
+        if(orders != null && orders.size() > 0){
+            return orders.get(0);
+        }
+        return null;
     }
 }

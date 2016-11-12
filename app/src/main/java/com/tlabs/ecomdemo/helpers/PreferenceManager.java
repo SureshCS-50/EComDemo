@@ -27,4 +27,17 @@ public class PreferenceManager {
         mEditor.putBoolean(Constants.KEY_IS_LOGGED_IN, isLoggedIn).apply();
     }
 
+    public void saveUserEmail(String email){
+        mEditor.putString(Constants.KEY_USER_EMAIL, email).apply();
+    }
+
+    public String getUserEmail(){
+        return mSharedPreferences.getString(Constants.KEY_USER_EMAIL, "");
+    }
+
+    public void clearData(){
+        mEditor.clear();
+        mEditor.apply();
+    }
+
 }

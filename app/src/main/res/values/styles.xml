@@ -19,14 +19,16 @@
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColorAlertDialogListItem">@android:color/white</item>
         <item name="android:textAppearanceMedium">@style/TextAppearance.Sphinx.Medium</item>
-        <item name="android:textAppearanceLarge">@style/TextAppearance.Sphinx.DialogWindowTitle</item>
+        <item name="android:textAppearanceLarge">@style/TextAppearance.Sphinx.DialogWindowTitle
+        </item>
         <item name="android:buttonBarStyle">@style/Sphinx.ButtonBar.AlertDialog</item>
     </style>
 
     <style name="DialogWindowTitle_Holo">
         <item name="android:maxLines">1</item>
         <item name="android:scrollHorizontally">true</item>
-        <item name="android:textAppearance">@android:style/TextAppearance.Holo.DialogWindowTitle</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Holo.DialogWindowTitle
+        </item>
     </style>
 
     <style name="DialogWindowTitle.Sphinx" parent="@style/DialogWindowTitle_Holo">
@@ -48,5 +50,9 @@
         <item name="android:background">@color/colorAccent</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

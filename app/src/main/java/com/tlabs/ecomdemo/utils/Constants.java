@@ -18,9 +18,13 @@ public class Constants {
 
     // keys..
     public static final String KEY_IS_LOGGED_IN = "is_logged_in";
+    public static final String KEY_USER_EMAIL = "user_email";
     public static final String KEY_STORE = "key_store";
     public static final String KEY_CATEGORY_ID = "key_category_id";
     public static final String KEY_ORDER_ID = "key_order_id";
+    public static final String KEY_ORDER = "key_order";
     public static final String KEY_STORE_ID = "key_store_id";
     public static final String KEY_IS_CATEGORY_LOADED = "is_category_loaded";
+    public static final String KEY_YES = "Yes";
+    public static final String KEY_NO = "No";
 }

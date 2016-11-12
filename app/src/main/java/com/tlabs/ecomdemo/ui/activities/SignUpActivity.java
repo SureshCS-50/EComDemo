@@ -1,7 +1,9 @@
 package com.tlabs.ecomdemo.ui.activities;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Patterns;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,11 +22,22 @@ public class SignUpActivity extends BaseActivity {
     private EditText mEtName, mEtEmail, mEtPassword, mEtConfirmPassword;
     private Button mBtnSignUp;
     private UserAccount mUserAccount;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitle("Create Account");
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        setSupportActionBar(mToolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         mUserAccount = new UserAccount();
 
@@ -48,6 +61,8 @@ public class SignUpActivity extends BaseActivity {
                     mPreferenceManager.setIsLoggedIn(true);
 
                     Utils.loadStaticData();
+
+                    mPreferenceManager.saveUserEmail(mUserAccount.email);
                     ActivityManager.showHomeActivity(SignUpActivity.this);
                     finish();
                 }
@@ -89,5 +104,16 @@ public class SignUpActivity extends BaseActivity {
         }
 
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

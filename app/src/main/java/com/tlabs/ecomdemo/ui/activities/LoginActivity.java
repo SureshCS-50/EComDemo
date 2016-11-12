@@ -82,6 +82,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void showHomeScreen() {
+        mPreferenceManager.saveUserEmail(mEtEmail.getText().toString().trim());
         ActivityManager.showHomeActivity(LoginActivity.this);
         finish();
     }

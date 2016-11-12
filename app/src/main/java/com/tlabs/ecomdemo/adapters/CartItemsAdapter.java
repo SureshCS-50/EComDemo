@@ -44,9 +44,9 @@ public class CartItemsAdapter extends BaseAdapter{
         this.mItems = items;
         this.mMeta = new ArrayList<>();
         for(CartItem item : mItems){
-            CartItemMeta meta = new CartItemMeta(String.valueOf(item.netQuantity),
+            CartItemMeta meta = new CartItemMeta(String.valueOf(item.oneQuantity),
                     item.itemPrice,
-                    item.itemPrice * item.netQuantity);
+                    item.itemPrice * item.oneQuantity);
             mMeta.add(meta);
         }
 
@@ -117,6 +117,8 @@ public class CartItemsAdapter extends BaseAdapter{
                 String netPrice = "Rs."+value;
                 viewHolder.txtPrice.setText(netPrice);
                 mMeta.get(viewHolder.id).netPrice = value;
+                mItems.get(viewHolder.id).netQuantity = Integer.valueOf(s.toString());
+                mItems.get(viewHolder.id).netPrice = netPrice;
                 mCartAdapterInteractor.calculateTotal(mMeta);
             }
         });

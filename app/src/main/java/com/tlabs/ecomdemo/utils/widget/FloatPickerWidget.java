@@ -212,7 +212,7 @@ public class FloatPickerWidget extends RelativeLayout implements TextWatcher {
 
         LayoutParams lp;
 
-        // TODO view customizations are done here..
+        // view customizations are done here..
 
         lp = new LayoutParams(getResources().getDimensionPixelOffset(R.dimen.dimen_24), getResources().getDimensionPixelOffset(R.dimen.dimen_24));
         lp.addRule(RelativeLayout.RIGHT_OF, TEXT_ID);
@@ -223,7 +223,7 @@ public class FloatPickerWidget extends RelativeLayout implements TextWatcher {
         lp.addRule(RelativeLayout.RIGHT_OF, SUBTRACT_BUTTON_ID);
         editText.setPadding(2, 2, 2, 2);
         editText.setEnabled(false);
-        editText.setTextSize(getResources().getDimensionPixelSize(R.dimen.sp_8));
+        editText.setTextSize(getResources().getDimensionPixelSize(R.dimen.sp_6));
         editText.setBackground(getResources().getDrawable(R.drawable.blue_border));
         addView(editText, lp);
 

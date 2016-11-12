@@ -113,7 +113,7 @@
                 decimal_places="0"
                 default_value="1f"
                 increment_amount="1f"
-                maximum_value="499f"
+                maximum_value="99f"
                 minimum_value="1f"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
