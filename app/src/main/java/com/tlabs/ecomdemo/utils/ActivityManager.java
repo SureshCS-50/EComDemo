@@ -7,6 +7,7 @@ import com.tlabs.ecomdemo.models.CartOrder;
 import com.tlabs.ecomdemo.models.Store;
 import com.tlabs.ecomdemo.ui.activities.AddressActivity;
 import com.tlabs.ecomdemo.ui.activities.CartActivity;
+import com.tlabs.ecomdemo.ui.activities.CartHistoryActivity;
 import com.tlabs.ecomdemo.ui.activities.ItemsActivity;
 import com.tlabs.ecomdemo.ui.activities.PaymentActivity;
 import com.tlabs.ecomdemo.ui.activities.StoresActivity;
@@ -66,4 +67,10 @@ public class ActivityManager {
         Intent intent = new Intent(activity, PaymentActivity.class);
         activity.startActivity(intent);
     }
+
+    public static void showCartHistoryActivity(Activity activity) {
+        Intent intent = new Intent(activity, CartHistoryActivity.class);
+        activity.startActivity(intent);
+    }
+
 }

@@ -17,4 +17,6 @@ public class CartItem extends SugarRecord {
     public long orderId = 0;
     public String storeId = "";
     public String categoryId = "";
+    public String storeName = "";
+    public String categoryName = "";
 }

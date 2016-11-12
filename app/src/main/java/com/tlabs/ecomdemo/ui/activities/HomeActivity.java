@@ -152,7 +152,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_cart) {
-            
+            ActivityManager.showCartHistoryActivity(HomeActivity.this);
             return true;
         }
 

@@ -162,11 +162,11 @@ public class PaymentActivity extends BaseActivity {
             Toast.makeText(this, "Please give your valid card expiry details", Toast.LENGTH_SHORT).show();
             return false;
         } else if (mEtCVV.getText().toString().trim().isEmpty()) {
-            mEtCVV.setError(getString(R.string.msg_mobile_validation));
+            mEtCVV.setError(getString(R.string.msg_cvv_validation));
             mEtCVV.requestFocus();
             return false;
         } else if (mEtCVV.getText().toString().trim().length() > 3) {
-            mEtCVV.setError(getString(R.string.msg_mobile_validation));
+            mEtCVV.setError(getString(R.string.msg_cvv_error));
             mEtCVV.requestFocus();
             return false;
         }

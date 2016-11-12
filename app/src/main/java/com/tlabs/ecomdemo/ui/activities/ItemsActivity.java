@@ -87,8 +87,6 @@ public class ItemsActivity extends BaseActivity {
                 mCartOrder.orderId = mCartOrder.getId();
                 mCartOrder.save();
 
-
-
                 for(int i = 0; i < selectedItemIds.length; i++){
                     if(selectedItemIds[i]){
                         isItemsAdded = true;
@@ -97,9 +95,12 @@ public class ItemsActivity extends BaseActivity {
                         cartItem.itemId = selectedItem.itemId;
                         cartItem.itemName = selectedItem.name;
                         cartItem.itemPrice = selectedItem.price;
+                        cartItem.netPrice = String.valueOf(selectedItem.price);
                         cartItem.itemQuantity = selectedItem.quantity;
                         cartItem.storeId = mStoreId;
                         cartItem.categoryId = mCategoryId;
+                        cartItem.storeName = mStore.name;
+                        cartItem.categoryName = mCategory.name;
                         cartItem.orderId = mCartOrder.getId();
                         cartItem.save();
                     }
