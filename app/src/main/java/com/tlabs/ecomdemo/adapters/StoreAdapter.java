@@ -60,9 +60,6 @@ public class StoreAdapter extends BaseAdapter{
 
             view = mInflater.inflate(R.layout.lyt_category_item, null);
             viewHolder.txtName = (TextView) view.findViewById(R.id.txtName);
-            viewHolder.txtNameIndex = (TextView) view.findViewById(R.id.txtNameIndex);
-            viewHolder.txtLocality = (TextView) view.findViewById(R.id.txtLocality);
-            viewHolder.txtRating = (TextView) view.findViewById(R.id.txtRating);
 
             view.setTag(viewHolder);
         } else {
@@ -72,9 +69,6 @@ public class StoreAdapter extends BaseAdapter{
         Store store = mStores.get(position);
 
         viewHolder.txtName.setText(store.name);
-        viewHolder.txtNameIndex.setText(store.name.substring(0, 1));
-        viewHolder.txtLocality.setText(store.locality);
-        viewHolder.txtRating.setText(store.rating);
 
         return view;
     }

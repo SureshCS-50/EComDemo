@@ -3,8 +3,8 @@ package com.tlabs.ecomdemo.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
 
+import com.tlabs.ecomdemo.R;
 import com.tlabs.ecomdemo.ui.fragments.HomeBannerFragment;
 
 import java.util.ArrayList;
@@ -16,14 +16,14 @@ import java.util.List;
 
 public class HomeBannerPagerAdapter extends FragmentStatePagerAdapter {
 
-    int[] mColors = new int[]{0xb0e76868, 0xb0faa860, 0xB0A3FA60};
+    int[] mImgaes = new int[]{R.drawable.banner_o, R.drawable.banner_t, R.drawable.banner_th};
     private List<Fragment> mBanners;
 
     public HomeBannerPagerAdapter(FragmentManager fm) {
         super(fm);
         this.mBanners = new ArrayList<>();
-        for(int i = 0; i < mColors.length; i++){
-            HomeBannerFragment bannerFragment = HomeBannerFragment.newInstance(mColors[i]);
+        for(int i = 0; i < mImgaes.length; i++){
+            HomeBannerFragment bannerFragment = HomeBannerFragment.newInstance(mImgaes[i]);
             mBanners.add(bannerFragment);
         }
     }

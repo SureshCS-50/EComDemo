@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.widget.ExpandableListView;
 
 import com.tlabs.ecomdemo.R;
+import com.tlabs.ecomdemo.models.CartItem;
 import com.tlabs.ecomdemo.models.CartOrderDetails;
 import com.tlabs.ecomdemo.adapters.ExCartOrderAdapter;
 import com.tlabs.ecomdemo.models.CartOrder;
@@ -49,6 +50,11 @@ public class CartHistoryActivity extends BaseActivity {
             orderDetails.storeId = order.storeId;
             orderDetails.storeName = order.storeName;
             orderDetails.items = mDataManager.getItemsByOrderId(orderDetails.orderId);
+            double netPrice = 0;
+            for(CartItem item : orderDetails.items){
+                netPrice = netPrice + (item.netQuantity * item.itemPrice);
+            }
+            orderDetails.netPrice = "Rs."+netPrice;
             mCartOrderDetails.add(orderDetails);
         }
 

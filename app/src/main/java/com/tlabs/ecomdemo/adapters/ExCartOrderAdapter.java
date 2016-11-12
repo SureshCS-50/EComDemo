@@ -123,8 +123,8 @@ public class ExCartOrderAdapter extends BaseExpandableListAdapter {
             String name = "";
             CartItem item = mCartOrderDetails.get(groupPosition).items.get(childPosition);
             if (item != null) {
-                txtName.setText(name);
-                txtNameIndex.setText(name.substring(0, 1));
+                txtName.setText(item.itemName);
+                txtNameIndex.setText(item.itemName.substring(0, 1));
                 txtProductInfo.setText("("+item.itemQuantity+" = Rs."+item.itemPrice+")");
                 txtPriceCount.setText(item.netPrice);
                 txtQuantityCount.setText(String.valueOf(item.netQuantity));

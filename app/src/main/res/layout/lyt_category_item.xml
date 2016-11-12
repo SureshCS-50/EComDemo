@@ -2,124 +2,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dimen_90"
+    android:layout_height="@dimen/dimen_72"
     android:background="@color/cardview_light_background"
     android:orientation="horizontal">
 
     <FrameLayout
         android:id="@+id/lytImage"
-        android:layout_width="@dimen/dimen_90"
-        android:layout_height="@dimen/dimen_90"
+        android:layout_width="@dimen/dimen_72"
+        android:layout_height="@dimen/dimen_72"
         android:background="@color/colorPrimaryLight">
 
-        <LinearLayout
-            android:id="@+id/lytNameIndex"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            tools:background="@color/colorPrimaryLight">
-
-            <TextView
-                android:id="@+id/txtNameIndex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                tools:text="N" />
-
-        </LinearLayout>
-
-        <!--<ImageView-->
-        <!--android:id="@+id/imgCategory"-->
+        <!--<LinearLayout-->
+        <!--android:id="@+id/lytNameIndex"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"-->
-        <!--android:padding="@dimen/dimen_8"-->
-        <!--android:scaleType="fitCenter"-->
-        <!--android:src="@mipmap/ic_launcher"/>-->
+        <!--android:gravity="center"-->
+        <!--tools:background="@color/colorPrimaryLight">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/txtNameIndex"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textStyle="bold"-->
+        <!--tools:text="N" />-->
+
+        <!--</LinearLayout>-->
+
+        <ImageView
+            android:id="@+id/imgCategory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder" />
 
     </FrameLayout>
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/txtName"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_90"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/dimen_8"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorPrimaryText"
+        tools:text="Name" />
 
-        <TextView
-            android:id="@+id/txtName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen_8"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/colorPrimaryText"
-            android:textStyle="bold"
-            tools:text="Name" />
-
-        <LinearLayout
-            android:id="@+id/lytCategoryInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_marginTop="@dimen/dimen_4"
-            android:layout_marginBottom="@dimen/dimen_4"
-            android:layout_marginLeft="@dimen/dimen_8"
-            android:layout_marginRight="@dimen/dimen_8">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/dimen_18"
-                    android:layout_height="@dimen/dimen_18"
-                    android:src="@drawable/location_marker"
-                    android:tint="@color/colorPrimary" />
-
-                <TextView
-                    android:id="@+id/txtLocality"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dimen_8"
-                    android:maxLines="1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@color/colorSecondaryText"
-                    android:textStyle="bold"
-                    tools:text="Chennai" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/dimen_18"
-                    android:layout_height="@dimen/dimen_18"
-                    android:src="@android:drawable/star_big_on"
-                    android:tint="@color/colorPrimary" />
-
-                <TextView
-                    android:id="@+id/txtRating"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dimen_8"
-                    android:maxLines="1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@color/colorSecondaryText"
-                    android:textStyle="bold"
-                    tools:text="5.0" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
 
 </LinearLayout>

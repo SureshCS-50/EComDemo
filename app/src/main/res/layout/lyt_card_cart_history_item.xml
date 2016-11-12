@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/cardview_light_background"
+    android:background="@color/light_gray"
     android:orientation="horizontal">
 
     <FrameLayout
@@ -43,6 +43,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/cardview_light_background"
         android:orientation="vertical">
 
         <LinearLayout
@@ -79,7 +80,6 @@
                 android:textStyle="italic"
                 tools:text="(1kg = Rs.9)" />
 
-
         </LinearLayout>
 
         <LinearLayout
@@ -106,15 +106,14 @@
                     android:maxLines="1"
                     android:text="Quantity:"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@color/colorSecondaryText"
-                    android:textStyle="bold" />
+                    android:textColor="@color/colorSecondaryText" />
 
                 <TextView
                     android:id="@+id/txtQuantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/colorSecondaryText"
                     android:textStyle="bold"
                     tools:text="48" />
@@ -142,8 +141,7 @@
                     android:maxLines="1"
                     android:text="Price:"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="@color/colorSecondaryText"
-                    android:textStyle="bold" />
+                    android:textColor="@color/colorSecondaryText" />
 
                 <TextView
                     android:id="@+id/txtPrice"
@@ -152,7 +150,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:maxLines="1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/colorSecondaryText"
                     android:textStyle="bold"
                     tools:text="Rs.9" />

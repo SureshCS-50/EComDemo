@@ -11,6 +11,6 @@ import java.io.Serializable;
 public class Category extends SugarRecord implements Serializable {
     public String categoryId = "";
     public String name = "";
-    public String drawable = "";
+    public int drawable;
     public String description = "";
 }

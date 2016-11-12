@@ -102,6 +102,7 @@ public class ItemsActivity extends BaseActivity {
                         cartItem.storeName = mStore.name;
                         cartItem.categoryName = mCategory.name;
                         cartItem.orderId = mCartOrder.getId();
+                        cartItem.drawable = selectedItem.drawable;
                         cartItem.save();
                     }
                 }

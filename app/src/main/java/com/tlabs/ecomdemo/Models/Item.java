@@ -11,7 +11,7 @@ public class Item extends SugarRecord {
     public String categoryIds = "";
     public String storeIds = "";
     public String name = "";
-    public String drawable = "";
+    public int drawable;
     public String quantity = "";
     public double price = 0;
 }

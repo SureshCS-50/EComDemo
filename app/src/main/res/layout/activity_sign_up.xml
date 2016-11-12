@@ -36,6 +36,7 @@
                     android:layout_marginBottom="@dimen/dimen_16"
                     android:background="@drawable/login_edittext_bg"
                     android:hint="@string/str_name"
+                    android:textColor="@color/white"
                     android:textColorHint="@color/white" />
 
                 <EditText
@@ -45,6 +46,7 @@
                     android:layout_marginBottom="@dimen/dimen_16"
                     android:background="@drawable/login_edittext_bg"
                     android:hint="@string/str_email"
+                    android:textColor="@color/white"
                     android:inputType="textEmailAddress"
                     android:textColorHint="@color/white" />
 
@@ -55,6 +57,7 @@
                     android:layout_marginBottom="@dimen/dimen_4"
                     android:background="@drawable/login_edittext_bg"
                     android:hint="@string/str_password"
+                    android:textColor="@color/white"
                     android:inputType="textPassword"
                     android:textColorHint="@color/white" />
 
@@ -67,6 +70,7 @@
                     android:background="@drawable/login_edittext_bg"
                     android:hint="@string/str_confirm_password"
                     android:inputType="textPassword"
+                    android:textColor="@color/white"
                     android:textColorHint="@color/white" />
 
                 <LinearLayout

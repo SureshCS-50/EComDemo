@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tlabs.ecomdemo.R;
@@ -21,12 +22,20 @@ import java.util.List;
 
 public class HomeCategoryAdapter extends BaseAdapter {
 
+    public int[] icons = {R.drawable.c_o,
+            R.drawable.c_t,
+            R.drawable.c_th,
+            R.drawable.c_f,
+            R.drawable.c_fi,};
     public List<Category> mCategories = new ArrayList<Category>();
     private Activity mActivity;
 
     public HomeCategoryAdapter(Activity activity, List<Category> mCategories) {
         this.mActivity = activity;
         this.mCategories = mCategories;
+        for(int i = 0; i < mCategories.size(); i++){
+            mCategories.get(i).drawable = icons[i];
+        }
     }
 
     @Override
@@ -56,6 +65,8 @@ public class HomeCategoryAdapter extends BaseAdapter {
         categoryRow.setId(1000+i);
         ((TextView) categoryRow.findViewById(R.id.txtHomeItemTitle)).setText(category.name);
         ((TextView) categoryRow.findViewById(R.id.txtHomeItemDescription)).setText(category.description);
+
+        ((ImageView) categoryRow.findViewById(R.id.imageIcon)).setImageResource(category.drawable);
         categoryRow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
