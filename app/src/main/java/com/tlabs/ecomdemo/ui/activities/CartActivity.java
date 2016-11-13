@@ -78,7 +78,7 @@ public class CartActivity extends BaseActivity implements CartAdapterInteractor 
         for (CartItemMeta item : items) {
             totalValue = totalValue + item.netPrice;
         }
-        String price = "Rs." + String.valueOf(totalValue);
+        String price = "QR " + String.valueOf(totalValue);
         mTxtTotal.setText(price);
         mCartOrder.netPrice = price;
         mCartOrder.save();

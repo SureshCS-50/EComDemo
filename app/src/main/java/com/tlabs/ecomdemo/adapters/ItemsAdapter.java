@@ -73,7 +73,7 @@ public class ItemsAdapter extends BaseAdapter{
 
         viewHolder.txtName.setText(item.name);
 //        viewHolder.txtNameIndex.setText(item.name.substring(0, 1));
-        viewHolder.txtPrice.setText("Rs."+item.price);
+        viewHolder.txtPrice.setText("QR "+item.price);
         viewHolder.txtQuantity.setText(item.quantity);
         viewHolder.imgCategory.setImageResource(item.drawable);
 

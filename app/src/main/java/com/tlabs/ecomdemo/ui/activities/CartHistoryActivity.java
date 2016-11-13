@@ -54,7 +54,7 @@ public class CartHistoryActivity extends BaseActivity {
             for(CartItem item : orderDetails.items){
                 netPrice = netPrice + (item.netQuantity * item.itemPrice);
             }
-            orderDetails.netPrice = "Rs."+netPrice;
+            orderDetails.netPrice = "QR "+netPrice;
             mCartOrderDetails.add(orderDetails);
         }
 

@@ -96,7 +96,7 @@ public class CartItemsAdapter extends BaseAdapter{
         viewHolder.imgCategory.setImageResource(item.drawable);
         String quantity = "("+item.itemQuantity+" = Rs."+item.itemPrice+")";
         viewHolder.txtQuantity.setText(quantity);
-        String value = "Rs."+item.itemPrice * Integer.valueOf(mMeta.get(position).quantity);
+        String value = "QR "+item.itemPrice * Integer.valueOf(mMeta.get(position).quantity);
         viewHolder.txtPrice.setText(value);
 
         viewHolder.id = position;
@@ -117,7 +117,7 @@ public class CartItemsAdapter extends BaseAdapter{
             public void afterTextChanged(Editable s) {
                 mMeta.get(viewHolder.id).quantity = s.toString();
                 double value = mMeta.get(viewHolder.id).price * Float.valueOf(s.toString());
-                String netPrice = "Rs."+value;
+                String netPrice = "QR "+value;
                 viewHolder.txtPrice.setText(netPrice);
                 mMeta.get(viewHolder.id).netPrice = value;
                 mItems.get(viewHolder.id).netQuantity = Integer.valueOf(s.toString());
