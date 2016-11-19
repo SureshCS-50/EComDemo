@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="?actionBarSize"
+    android:layout_marginTop="@dimen/dimen_110"
     android:background="@color/white"
     android:focusable="true"
     android:focusableInTouchMode="true">
@@ -16,12 +16,14 @@
             android:id="@+id/lytHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/colorPrimary">
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewPagerBanner"
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_height="@dimen/dimen_200"
+                android:layout_marginTop="@dimen/dimen_8"
                 android:layout_gravity="center"
                 android:background="@color/colorPrimary" />
 

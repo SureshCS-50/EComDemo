@@ -59,10 +59,10 @@ public class SignUpActivity extends BaseActivity {
                     mUserAccount.save();
 
                     mPreferenceManager.setIsLoggedIn(true);
+                    mPreferenceManager.saveUserEmail(mUserAccount.email);
 
                     Utils.loadStaticData();
 
-                    mPreferenceManager.saveUserEmail(mUserAccount.email);
                     ActivityManager.showHomeActivity(SignUpActivity.this);
                     finish();
                 }

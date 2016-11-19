@@ -5,19 +5,24 @@ import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.AutoScrollHelper;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tlabs.ecomdemo.R;
 import com.tlabs.ecomdemo.adapters.HomeBannerPagerAdapter;
 import com.tlabs.ecomdemo.adapters.HomeCategoryAdapter;
+import com.tlabs.ecomdemo.adapters.StoreAdapter;
 import com.tlabs.ecomdemo.models.Category;
+import com.tlabs.ecomdemo.models.Store;
 import com.tlabs.ecomdemo.models.UserAccount;
 import com.tlabs.ecomdemo.ui.common.BaseActivity;
 import com.tlabs.ecomdemo.utils.ActivityManager;
@@ -31,6 +36,8 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     private HomeCategoryAdapter mHomeCategoryAdapter;
     private HomeBannerPagerAdapter mHomeBannerPagerAdapter;
     private Handler mBannerHandler;
+    private AutoCompleteTextView mEtSearch;
+    private StoreAdapter mStoreAdapter;
     private int mDelay = 3000; //milliseconds
     private int mPage = 0;
     Runnable mBannerRunnable = new Runnable() {
@@ -57,8 +64,19 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         mBannerHandler = new Handler();
         mBannerPager = (ViewPager) findViewById(R.id.viewPagerBanner);
         mLytHomeCategories = (LinearLayout) findViewById(R.id.lytHomeItems);
+        mEtSearch = (AutoCompleteTextView) findViewById(R.id.etSearch);
         mHomeCategoryAdapter = new HomeCategoryAdapter(this, mCategories);
         mHomeBannerPagerAdapter = new HomeBannerPagerAdapter(getSupportFragmentManager());
+        mStoreAdapter = new StoreAdapter(this, true);
+        mEtSearch.setAdapter(mStoreAdapter);
+        mEtSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Store store = ((StoreAdapter) adapterView.getAdapter()).getItem(i);
+                mEtSearch.setText(store.name);
+                ActivityManager.showItemsActivity(HomeActivity.this, "0", store.storeId);
+            }
+        });
 
         loadBanners();
         loadCategoryList();

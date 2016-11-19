@@ -30,12 +30,12 @@ public class HomeCategoryAdapter extends BaseAdapter {
     public List<Category> mCategories = new ArrayList<Category>();
     private Activity mActivity;
 
-    public HomeCategoryAdapter(Activity activity, List<Category> mCategories) {
+    public HomeCategoryAdapter(Activity activity, List<Category> categories) {
         this.mActivity = activity;
-        this.mCategories = mCategories;
-        for(int i = 0; i < mCategories.size(); i++){
-            mCategories.get(i).drawable = icons[i];
+        for (int i = 0; i < categories.size(); i++) {
+            categories.get(i).drawable = icons[i];
         }
+        this.mCategories = categories;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class HomeCategoryAdapter extends BaseAdapter {
             categoryRow = convertView;
         }
         final Category category = mCategories.get(i);
-        categoryRow.setId(1000+i);
+        categoryRow.setId(1000 + i);
         ((TextView) categoryRow.findViewById(R.id.txtHomeItemTitle)).setText(category.name);
         ((TextView) categoryRow.findViewById(R.id.txtHomeItemDescription)).setText(category.description);
 
@@ -71,7 +71,6 @@ public class HomeCategoryAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 ActivityManager.showStoresActivity(mActivity, category.categoryId);
-//                ActivityManager.showCartActivity(mActivity, 1);
             }
         });
         return categoryRow;
@@ -81,8 +80,8 @@ public class HomeCategoryAdapter extends BaseAdapter {
         mCategories.add(category);
     }
 
-    public void setItems(ArrayList<Category> categories){
-        if(categories != null) {
+    public void setItems(ArrayList<Category> categories) {
+        if (categories != null) {
             this.mCategories.clear();
             this.mCategories.addAll(categories);
         }

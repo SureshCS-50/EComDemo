@@ -23,7 +23,6 @@ public class StoresActivity extends BaseActivity {
     private ListView mListViewStores;
     private StoreAdapter mStoreAdapter;
     private String mCategoryId = "";
-    private List<Store> mStores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +30,7 @@ public class StoresActivity extends BaseActivity {
         setContentView(R.layout.activity_stores);
 
         Bundle extras = getIntent().getExtras();
-        mCategoryId = extras.getString(Constants.KEY_CATEGORY_ID, "");
+        mCategoryId = extras.getString(Constants.KEY_CATEGORY_ID, "0");
         Category category = mDataManager.getCategoryById(mCategoryId);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -44,10 +43,8 @@ public class StoresActivity extends BaseActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        mStores = mDataManager.getAllStores();
-
         mListViewStores = (ListView) findViewById(R.id.listItems);
-        mStoreAdapter = new StoreAdapter(this, mStores);
+        mStoreAdapter = new StoreAdapter(this, false);
         mListViewStores.setAdapter(mStoreAdapter);
         mListViewStores.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

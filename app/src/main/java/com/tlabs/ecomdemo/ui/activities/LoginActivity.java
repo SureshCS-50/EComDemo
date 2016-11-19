@@ -8,11 +8,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.tlabs.ecomdemo.R;
 import com.tlabs.ecomdemo.ui.common.BaseActivity;
 import com.tlabs.ecomdemo.utils.ActivityManager;
 import com.tlabs.ecomdemo.utils.Utils;
 
+import io.fabric.sdk.android.Fabric;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends BaseActivity {
@@ -24,6 +26,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_login);
 
         mEtEmail = (EditText) findViewById(R.id.etEmail);
@@ -43,6 +46,7 @@ public class LoginActivity extends BaseActivity {
                     if (mDataManager.checkUserLogin(email, password)) {
                         Utils.loadStaticData();
                         mPreferenceManager.setIsLoggedIn(true);
+                        mPreferenceManager.saveUserEmail(mEtEmail.getText().toString().trim());
                         showHomeScreen();
                     } else {
                         Toast.makeText(LoginActivity.this, R.string.str_invalid_login, Toast.LENGTH_SHORT).show();
@@ -82,7 +86,6 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void showHomeScreen() {
-        mPreferenceManager.saveUserEmail(mEtEmail.getText().toString().trim());
         ActivityManager.showHomeActivity(LoginActivity.this);
         finish();
     }

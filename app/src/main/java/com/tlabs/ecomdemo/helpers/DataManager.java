@@ -17,7 +17,7 @@ import java.util.List;
 public class DataManager {
 
     public List<Category> getAllCategories(){
-        List<Category> categories = Category.listAll(Category.class);
+        List<Category> categories = Category.find(Category.class, "category_id != ?", new String[]{"0"}, null, null, null);
         if (categories != null && categories.size() > 0) {
             return categories;
         }
@@ -43,9 +43,16 @@ public class DataManager {
     }
 
     public List<Item> getItemsByCategory(String categoryId) {
-        List<Item> items = Item.find(Item.class, "category_ids = ?", new String[]{categoryId}, null, null, null);
-        if (items != null && items.size() > 0) {
-            return items;
+        if(!categoryId.equals("0")) {
+            List<Item> items = Item.find(Item.class, "category_ids = ?", new String[]{categoryId}, null, null, null);
+            if (items != null && items.size() > 0) {
+                return items;
+            }
+        } else{
+            List<Item> items = Item.listAll(Item.class);
+            if(items != null && items.size() > 0){
+                return items;
+            }
         }
 
         return new ArrayList<>();

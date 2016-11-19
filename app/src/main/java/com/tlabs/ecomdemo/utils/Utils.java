@@ -39,10 +39,28 @@ public class Utils {
         }
 
         List<Store> stores = getObjectFromJson(Constants.JSON_STORES, new TypeToken<List<Store>>(){}.getType());
+        int[] sItems = {R.drawable.abudhabi_coop, R.drawable.almeera, R.drawable.carrefour, R.drawable.lulu, R.drawable.quality, R.drawable.safari, R.drawable.spinneys, R.drawable.union_coop};
         for(Store store : stores){
+            String name = store.name.toLowerCase().trim();
+            if(name.startsWith("ab")){
+                store.drawable = sItems[0];
+            } else if(name.startsWith("al")){
+                store.drawable = sItems[1];
+            } else if(name.startsWith("ca")){
+                store.drawable = sItems[2];
+            } else if(name.startsWith("lu")){
+                store.drawable = sItems[3];
+            } else if(name.startsWith("qu")){
+                store.drawable = sItems[4];
+            } else if(name.startsWith("sa")){
+                store.drawable = sItems[5];
+            } else if(name.startsWith("sp")){
+                store.drawable = sItems[6];
+            } else if(name.startsWith("un")){
+                store.drawable = sItems[7];
+            }
             store.save();
         }
-
         List<Item> items = new ArrayList<>();
         List<Item> fruits = getObjectFromJson(Constants.JSON_ITEMS_FRUITS, new TypeToken<List<Item>>(){}.getType());
         int[] fItems = {R.drawable.fa, R.drawable.fb, R.drawable.fc, R.drawable.fd, R.drawable.fe, R.drawable.ff, R.drawable.fg};

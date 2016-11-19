@@ -2,19 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/dimen_8"
     tools:context="com.tlabs.ecomdemo.ui.fragments.HomeBannerFragment">
-
-    <!--<ImageView-->
-        <!--android:id="@+id/imgHomeBanner"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:background="@color/cardview_dark_background"/>-->
 
     <ImageView
         android:id="@+id/imgHomeBanner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:scaleType="fitCenter"
+        android:layout_margin="@dimen/dimen_8"/>
 
 </FrameLayout>

@@ -12,7 +12,7 @@ public class Store extends SugarRecord implements Serializable {
     public String storeId = "";
     public String categoryIds = "";
     public String name = "";
-    public String drawable = "";
+    public int drawable = 0;
     public String rating = "";
     public String locality = "";
     public String city = "";

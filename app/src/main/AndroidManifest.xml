@@ -58,6 +58,10 @@
             android:label="@string/title_activity_temp"
             android:theme="@style/AppTheme" />
         <activity android:name=".ui.activities.CartHistoryActivity"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="6e6834910d9eb88e05a6a11643991e9d180bdf36" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

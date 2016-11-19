@@ -32,6 +32,7 @@
                     android:hint="@string/str_email"
                     android:textColor="@color/white"
                     android:background="@drawable/login_edittext_bg"
+                    android:maxLines="1"
                     android:inputType="textEmailAddress"
                     android:textColorHint="@color/white" />
 
@@ -40,9 +41,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/str_password"
-                    android:textColor="@color/white"
                     android:inputType="textPassword"
+                    android:textColor="@color/white"
                     android:textColorHint="@color/white"
+                    android:maxLines="1"
                     android:background="@drawable/login_edittext_bg"
                     android:layout_marginBottom="@dimen/dimen_4"/>
 

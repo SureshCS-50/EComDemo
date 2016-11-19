@@ -49,7 +49,7 @@ public class ItemsActivity extends BaseActivity {
 
         Bundle extras = getIntent().getExtras();
         mStoreId = extras.getString(Constants.KEY_STORE_ID, "");
-        mCategoryId = extras.getString(Constants.KEY_CATEGORY_ID, "");
+        mCategoryId = extras.getString(Constants.KEY_CATEGORY_ID, "0");
 
         mStore = mDataManager.getStoreById(mStoreId);
         mCategory = mDataManager.getCategoryById(mCategoryId);
