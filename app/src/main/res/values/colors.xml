@@ -8,6 +8,8 @@
     <color name="colorSecondaryText">#757575</color>
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorDividerTransparent">#6dbdbdbd</color>
+    <color name="getatLogoGray">#a6a9ae</color>
+
 
     <color name="photo_tint">#4d212121</color>
     <color name="photo_tint_48">#30101010</color>
