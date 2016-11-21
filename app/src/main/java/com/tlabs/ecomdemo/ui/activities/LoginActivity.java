@@ -15,6 +15,7 @@ import com.tlabs.ecomdemo.utils.ActivityManager;
 import com.tlabs.ecomdemo.utils.Utils;
 
 import io.fabric.sdk.android.Fabric;
+
 import java.util.regex.Pattern;
 
 public class LoginActivity extends BaseActivity {
@@ -22,6 +23,7 @@ public class LoginActivity extends BaseActivity {
     private EditText mEtEmail, mEtPassword;
     private TextView mTxtForgotPassword, mTxtSignUp, mTxtTerms;
     private Button mBtnLogin;
+    private boolean isBtnClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +42,19 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (validateFields()) {
-                    String email = mEtEmail.getText().toString().trim();
-                    String password = mEtPassword.getText().toString().trim();
+                    if (!isBtnClicked) {
+                        isBtnClicked = true;
+                        String email = mEtEmail.getText().toString().trim();
+                        String password = mEtPassword.getText().toString().trim();
 
-                    if (mDataManager.checkUserLogin(email, password)) {
-                        Utils.loadStaticData();
-                        mPreferenceManager.setIsLoggedIn(true);
-                        mPreferenceManager.saveUserEmail(mEtEmail.getText().toString().trim());
-                        showHomeScreen();
-                    } else {
-                        Toast.makeText(LoginActivity.this, R.string.str_invalid_login, Toast.LENGTH_SHORT).show();
+                        if (mDataManager.checkUserLogin(email, password)) {
+                            Utils.loadStaticData();
+                            mPreferenceManager.setIsLoggedIn(true);
+                            mPreferenceManager.saveUserEmail(mEtEmail.getText().toString().trim());
+                            showHomeScreen();
+                        } else {
+                            Toast.makeText(LoginActivity.this, R.string.str_invalid_login, Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             }

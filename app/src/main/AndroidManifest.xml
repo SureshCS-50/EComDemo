@@ -36,7 +36,7 @@
             android:value="ecomapp.db" />
         <meta-data
             android:name="VERSION"
-            android:value="1" />
+            android:value="2" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />
@@ -53,10 +53,6 @@
         <activity
             android:name=".ui.activities.PaymentActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activities.TempActivity"
-            android:label="@string/title_activity_temp"
-            android:theme="@style/AppTheme" />
         <activity android:name=".ui.activities.CartHistoryActivity"></activity>
         <meta-data
             android:name="io.fabric.ApiKey"

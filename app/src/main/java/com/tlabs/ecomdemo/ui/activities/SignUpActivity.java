@@ -23,6 +23,7 @@ public class SignUpActivity extends BaseActivity {
     private Button mBtnSignUp;
     private UserAccount mUserAccount;
     private Toolbar mToolbar;
+    private boolean isBtnClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,19 +53,21 @@ public class SignUpActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (validateFields()) {
+                    if (!isBtnClicked) {
+                        isBtnClicked = true;
+                        mUserAccount.name = mEtName.getText().toString().trim();
+                        mUserAccount.email = mEtEmail.getText().toString().trim();
+                        mUserAccount.password = mEtPassword.getText().toString().trim();
+                        mUserAccount.save();
 
-                    mUserAccount.name = mEtName.getText().toString().trim();
-                    mUserAccount.email = mEtEmail.getText().toString().trim();
-                    mUserAccount.password = mEtPassword.getText().toString().trim();
-                    mUserAccount.save();
+                        mPreferenceManager.setIsLoggedIn(true);
+                        mPreferenceManager.saveUserEmail(mUserAccount.email);
 
-                    mPreferenceManager.setIsLoggedIn(true);
-                    mPreferenceManager.saveUserEmail(mUserAccount.email);
+                        Utils.loadStaticData();
 
-                    Utils.loadStaticData();
-
-                    ActivityManager.showHomeActivity(SignUpActivity.this);
-                    finish();
+                        ActivityManager.showHomeActivity(SignUpActivity.this);
+                        finish();
+                    }
                 }
             }
         });
